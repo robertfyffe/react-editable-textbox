@@ -2,7 +2,7 @@
 
 Accessible contentEditable textbox for React.js
 
-[![Build Status](https://travis-ci.org/reactjs/react-editable-textbox.svg?branch=v1)](https://travis-ci.com/github/robertfyffe/react-editable-textbox)
+[![Build Status](https://travis-ci.com/robertfyffe/react-editable-textbox.svg?branch=master)](https://travis-ci.com/robertfyffe/react-editable-textbox)
 ![gzip size](http://img.badgesize.io/https://unpkg.com/react-editable-textbox/dist/react-editable-textbox.min.js?compression=gzip)
 
 ## Table of Contents
