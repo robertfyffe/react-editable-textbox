@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/robertfyffe/react-editable-textbox/compare/v0.0.5...v0.0.6) (2020-04-28)
+
+
+### Bug Fixes
+
+* **configs:** updated production build configuration ([#4](https://github.com/robertfyffe/react-editable-textbox/issues/4)) ([a201c32](https://github.com/robertfyffe/react-editable-textbox/commit/a201c3206f8d2f8b2bea7a1df8b5f0d0f467238b))
+
 ### [0.0.5](https://github.com/robertfyffe/react-editable-textbox/compare/v0.0.4...v0.0.5) (2020-04-28)
 
 
