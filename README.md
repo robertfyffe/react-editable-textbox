@@ -14,8 +14,8 @@ Accessible contentEditable textbox for React.js
 
 To install, you can use [npm](https://npmjs.org/) or [yarn](https://yarnpkg.com):
 
-    $ npm install react-editable-textbox
-    $ yarn add react-editable-textbox
+    $ npm install @robertfyffe/react-editable-textbox
+    $ yarn add @robertfyffe/react-editable-textbox
 
 ## API documentation
 
