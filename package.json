@@ -2,9 +2,10 @@
   "name": "@robertfyffe/react-editable-textbox",
   "version": "0.0.5",
   "description": "React component for creating a contentEditable textbox.",
-  "main": "index.js",
+  "main": "dist/react-editable-textbox.js",
   "scripts": {
     "start": "yarn webpack-dev-server --config ./scripts/webpack.config.js --inline --host 127.0.0.1 --content-base examples/",
+    "build": "yarn webpack --config ./scripts/webpack.dist.config.js",
     "test": "yarn test:lint && cross-env NODE_ENV=test karma start",
     "test:lint": "yarn eslint --cache --quiet \"src/**/*.js\"",
     "test:lint:fix": "yarn test:lint --fix",

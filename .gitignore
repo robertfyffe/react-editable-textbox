@@ -1,2 +1,15 @@
+examples/**/*-bundle.js
 node_modules/
-.eslintcache
+.idea/
+.vscode
+_book
+*.patch
+*.diff
+*.orig
+*.rej
+examples/__build__
+coverage
+yarn.lock
+
+## Built folders
+lib

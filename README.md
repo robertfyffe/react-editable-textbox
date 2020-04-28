@@ -126,7 +126,7 @@ Here is a simple example of react-editable-textbox being used in an app:
 ```jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { EditableTextBox } from 'react-content-editable';
+import { EditableTextBox } from '@robertfyffe/react-content-editable';
 
 const App = () => <EditableTextBox />;
 

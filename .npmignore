@@ -6,8 +6,6 @@ CONTRIBUTING.md
 .cz-config.js
 *.orig
 *.rej
-.changelog_update
-Makefile
 book.json
 bootstrap.sh
 bower.json
