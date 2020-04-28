@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/robertfyffe/react-editable-textbox/compare/v0.0.4...v0.0.5) (2020-04-28)
+
+
+### Bug Fixes
+
+* **docs:** corrected npm module name in Readme ([#3](https://github.com/robertfyffe/react-editable-textbox/issues/3)) ([f9cdc79](https://github.com/robertfyffe/react-editable-textbox/commit/f9cdc7998ba245881876b41b5a8b11bd67e2cd82))
+
 ### [0.0.4](https://github.com/robertfyffe/react-editable-textbox/compare/v0.0.3...v0.0.4) (2020-04-28)
 
 
