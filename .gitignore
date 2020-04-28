@@ -10,6 +10,7 @@ _book
 examples/__build__
 coverage
 yarn.lock
+yarn-error.log
 
 ## Built folders
 lib
