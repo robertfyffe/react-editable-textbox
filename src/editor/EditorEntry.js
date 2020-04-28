@@ -1,4 +1,4 @@
-import React, { PureComponent, createRef } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
@@ -32,30 +32,10 @@ const containerCustomStyles = ({ customStyling }) => css`
 
 const Container = styled('div')(containerBaseStyles, containerCustomStyles);
 
-class EditorEntry extends PureComponent {
-  static propTypes = propTypes.editorEntry;
+const EditorEntry = ({ elRef, ...rest }) => <Container ref={elRef} {...rest} />;
 
-  static defaultProps = defaultProps.editorEntry;
+EditorEntry.propTypes = propTypes.editorEntry;
 
-  el = createRef();
-
-  getRef = () => this.el.current;
-
-  componentDidMount = () => {
-    this.getRef().innerHTML = this.props.text || '<p></p>';
-  };
-
-  handleOnKeyUp = () => {
-    const { charCount } = this.props;
-
-    if (!charCount) {
-      this.getRef().innerHTML = '<p></p>';
-    }
-  };
-
-  render = () => (
-    <Container ref={this.el} {...this.props} onKeyUp={this.handleOnKeyUp} />
-  );
-}
+EditorEntry.defaultProps = defaultProps.editorEntry;
 
 export default EditorEntry;

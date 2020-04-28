@@ -1,4 +1,10 @@
 language: node_js
-node_js:
-  - '12'
+node_js: node
 cache: yarn
+services:
+  - xvfb
+before_script:
+  - export DISPLAY=:99.0
+script:
+  - yarn test:lint
+  - yarn cross-env NODE_ENV=test karma start --single-run
