@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/robertfyffe/react-editable-textbox/compare/v0.0.3...v0.0.4) (2020-04-28)
+
+
+### Bug Fixes
+
+* **configs:** added missing display value for travis-ci ([7c7e374](https://github.com/robertfyffe/react-editable-textbox/commit/7c7e374cbfa2147f91af9099ddf64c8137ca3afa))
+
 ### [0.0.3](https://github.com/robertfyffe/react-editable-textbox/compare/v0.0.2...v0.0.3) (2020-04-27)
 
 
