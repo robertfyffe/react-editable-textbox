@@ -6,16 +6,24 @@ export default {
     role: 'textbox',
     placeholder: 'Placeholder text...',
     allowedAttributes: {},
-    allowedTags: ['p']
+    allowedTags: ['p'],
+    disabled: false,
+    onBlur: () => {},
+    onFocus: () => {},
+    onInput: () => {}
   },
   editorPlaceholder: {
-    className: null
+    className: null,
+    customStyling: {}
   },
   editorEntry: {
     tabIndex: 0,
+    customStyling: {},
     contentEditable: true,
     suppressContentEditableWarning: true,
     spellCheck: false,
-    className: null
+    className: null,
+    disabled: false,
+    onInput: () => {}
   }
 };

@@ -17,7 +17,7 @@ const App = () => (
       editorPlaceholder: {
         color: '#57a1ae',
         fontSize: '16px',
-        padding: '6px 0 6px 10px'
+        padding: '10px 0 6px 14px'
       },
       editorEntry: {
         borderColor: '#bee5eb',

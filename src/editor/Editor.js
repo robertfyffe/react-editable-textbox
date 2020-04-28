@@ -45,18 +45,18 @@ class Editor extends PureComponent {
     super(props);
 
     const { defaultText } = props;
+    const defaultTextCount =
+      defaultText && this.removeAllHtml(defaultText).length;
 
     this.state = {
-      focused: false,
-      charCount: (defaultText && defaultText.length) || null,
+      charCount: defaultTextCount || 0,
       text: defaultText || null
     };
   }
 
-  setFocused = () =>
-    this.setState({
-      focused: !this.state.focused
-    });
+  componentDidMount = () => {
+    this.editorEntry.innerHTML = this.props.defaultText || '<p></p>';
+  };
 
   setCharCount = (charCount) =>
     this.setState({
@@ -81,24 +81,28 @@ class Editor extends PureComponent {
     });
   };
 
-  handleFocus = () => {
-    this.setFocused();
-    this.handleEvent(this.props.onFocus);
-  };
+  handleFocus = () => this.handleEvent(this.props.onFocus);
 
-  handleBlur = () => {
-    this.setFocused();
-    this.handleEvent(this.props.onBlur);
-  };
+  handleBlur = () => this.handleEvent(this.props.onBlur);
 
   handleOnInput = ({ target }) => {
     const text = this.cleanHtml(target.innerHTML);
-    const textCleaned = this.cleanHtml(target.innerHTML, []);
+    const textCleaned = this.removeAllHtml(target.innerHTML);
 
     this.setText(text);
     this.setCharCount(textCleaned.length);
     this.handleEvent(this.props.onInput);
   };
+
+  handleKeyUp = () => {
+    if (this.state.charCount) {
+      return;
+    }
+
+    this.editorEntry.innerHTML = '<p></p>';
+  };
+
+  removeAllHtml = (text) => this.cleanHtml(text, []);
 
   cleanHtml = (text, tags) => {
     const { allowedAttributes, allowedTags } = this.props;
@@ -132,16 +136,22 @@ class Editor extends PureComponent {
     return (
       <ThemeProvider theme={editorTheme}>
         <Container
+          ref={(ref) => {
+            this.editor = ref;
+          }}
           {...{
+            disabled,
             customStyling: styles.editor,
             onFocus: this.handleFocus,
-            onBlur: this.handleBlur,
-            disabled
+            onBlur: this.handleBlur
           }}
         >
           {!charCount && (
             <EditorPlaceholder
               {...{
+                elRef: (ref) => {
+                  this.editorPlaceholder = ref;
+                },
                 customStyling: styles.editorPlaceholder
               }}
             >
@@ -151,12 +161,15 @@ class Editor extends PureComponent {
 
           <EditorEntry
             {...{
-              ...aria,
+              elRef: (ref) => {
+                this.editorEntry = ref;
+              },
               role,
+              text,
               customStyling: styles.editorEntry,
               onInput: this.handleOnInput,
-              text,
-              charCount
+              onKeyUp: this.handleKeyUp,
+              ...aria
             }}
           />
         </Container>
