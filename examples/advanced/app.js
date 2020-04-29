@@ -55,9 +55,9 @@ const App = () => (
     allowedAttributes={{
       a: ['href']
     }}
-    onFocus={(resp) => {}}
-    onBlur={(resp) => {}}
-    onInput={(resp) => {}}
+    onFocus={(resp) => console.log(resp)}
+    onBlur={(resp) => console.log(resp)}
+    onInput={(resp) => console.log(resp)}
   />
 );
 

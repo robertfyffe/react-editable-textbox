@@ -10,7 +10,6 @@ import {
   cleanHtml,
   getTheme,
   getCustomStyling,
-  createEvents,
   handleEvent,
   setText
 } from './utils';
@@ -47,10 +46,6 @@ const Container = styled('div')`
 `;
 
 class Editor extends PureComponent {
-  static propTypes = propTypes.editor;
-
-  static defaultProps = defaultProps.editor;
-
   constructor(props) {
     super(props);
     const { defaultText, allowedTags, allowedAttributes } = props;
@@ -132,7 +127,8 @@ class Editor extends PureComponent {
     const propManager = {
       [EDITOR]: {
         ref: (ref) => this.createRef(ref, EDITOR),
-        ...createEvents([onFocus, onBlur], this.state),
+        onFocus: () => handleEvent(onFocus, this.state),
+        onBlur: () => handleEvent(onBlur, this.state),
         ...getCustomStyling(EDITOR, styles),
         disabled
       },
@@ -175,5 +171,8 @@ class Editor extends PureComponent {
     );
   };
 }
+
+Editor.propTypes = propTypes.editor;
+Editor.defaultProps = defaultProps.editor;
 
 export default Editor;
