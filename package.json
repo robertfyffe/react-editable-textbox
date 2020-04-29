@@ -10,7 +10,8 @@
     "test:lint": "yarn eslint --cache --quiet \"src/**/*.js\"",
     "test:lint:fix": "yarn test:lint --fix",
     "release": "standard-version",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js 2>/dev/null"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,7 @@
     "@emotion/core": "^10.0.28",
     "@emotion/css": "^10.0.27",
     "@emotion/styled": "^10.0.27",
+    "coveralls": "^3.1.0",
     "dompurify": "^2.0.10",
     "emotion-theming": "^10.0.27"
   },
@@ -72,7 +74,6 @@
     "karma-webpack": "^4.0.2",
     "lint-staged": "^10.1.7",
     "mocha": "^7.1.2",
-    "overalls": "^1.0.4",
     "prettier": "^2.0.5",
     "prettier-eslint": "^9.0.1",
     "prop-types": "^15.7.2",
