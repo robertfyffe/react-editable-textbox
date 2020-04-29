@@ -23,23 +23,40 @@ export const focusAt = Simulate.focus;
 export const blurAt = Simulate.blur;
 
 /**
- *
- * Return an element from a react component.
- * @param {React} A react instance.
- * @return {DOMElement}
+ * Dispatch a 'keyUp' event at a node.
  */
-const editableTextBoxComponent = (component) => (instance) => {
-  console.log(instance[component]);
-  return instance[component];
-};
+export const keyUpAt = Simulate.keyUp;
 
 /**
- * Returns an attribut of a rendered react tree.
+ *
+ * Return an element from a react component.
+ * @param {React} component A react instance.
+ * @return {DOMElement}
+ */
+const editableTextBoxComponent = (component) => (instance) =>
+  instance[component];
+
+/**
+ * Returns an attribute of a rendered react tree.
  * @param {React} component A react instance.
  * @return {String}
  */
 const getEditableTextBoxAttribute = (component) => (instance, attr) =>
   editableTextBoxComponent(component)(instance).getAttribute(attr);
+
+/**
+ * Returns the editor.
+ * @param {Editor} Editor EditorTextBox instance.
+ * @return {DOMElement}
+ */
+export const editorContent = editableTextBoxComponent('editor');
+
+/**
+ * Returns the editor.
+ * @param {Editor} EditorEntry EditorTextBox instance.
+ * @return {DOMElement}
+ */
+export const editorEntry = editableTextBoxComponent('editorEntry');
 
 /**
  * Return an attribute of editable text box.

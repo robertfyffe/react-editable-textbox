@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { ThemeProvider } from 'emotion-theming';
-import sanitizeHtml from 'sanitize-html';
+import { sanitize } from 'dompurify';
 
 import propTypes from './propTypes';
 import defaultProps from './defaultProps';
@@ -68,11 +68,7 @@ class Editor extends PureComponent {
       text
     });
 
-  handleEvent = (requestedEvent) => {
-    if (!requestedEvent) {
-      return;
-    }
-
+  callEvent = (requestedEvent) => {
     const { charCount, text } = this.state;
 
     requestedEvent({
@@ -80,6 +76,8 @@ class Editor extends PureComponent {
       text
     });
   };
+
+  handleEvent = (ev) => ev && this.callEvent(ev);
 
   handleFocus = () => this.handleEvent(this.props.onFocus);
 
@@ -98,7 +96,6 @@ class Editor extends PureComponent {
     if (this.state.charCount) {
       return;
     }
-
     this.editorEntry.innerHTML = '<p></p>';
   };
 
@@ -107,9 +104,9 @@ class Editor extends PureComponent {
   cleanHtml = (text, tags) => {
     const { allowedAttributes, allowedTags } = this.props;
 
-    return sanitizeHtml(text, {
-      allowedAttributes,
-      allowedTags: tags || allowedTags
+    return sanitize(text, {
+      ALLOWED_ATTR: allowedAttributes,
+      ALLOWED_TAGS: tags || allowedTags
     });
   };
 

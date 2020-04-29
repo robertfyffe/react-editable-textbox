@@ -29,14 +29,15 @@
   },
   "homepage": "https://github.com/robertfyffe/react-editable-textbox#readme",
   "peerDependencies": {
-    "react": ">=16.3.0"
+    "react": "^16",
+    "react-dom": "^16"
   },
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "@emotion/css": "^10.0.27",
     "@emotion/styled": "^10.0.27",
-    "emotion-theming": "^10.0.27",
-    "sanitize-html": "^1.23.0"
+    "dompurify": "^2.0.10",
+    "emotion-theming": "^10.0.27"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
