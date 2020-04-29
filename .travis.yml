@@ -7,4 +7,5 @@ before_script:
   - export DISPLAY=:99.0
 script:
   - yarn test:lint
+  - cross-env NODE_ENV=test karma start"
   - yarn coverage
