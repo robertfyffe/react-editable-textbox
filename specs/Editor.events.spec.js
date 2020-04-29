@@ -1,15 +1,20 @@
 /* eslint-env mocha */
-import should from 'should';
 import sinon from 'sinon';
 
-import { focusAt, blurAt, keyUpAt, renderEditableTextBox } from './helpers';
+import { handleEvent } from '../src/editor/utils';
+import {
+  focusAt,
+  blurAt,
+  inputAt,
+  keyUpAt,
+  renderEditableTextBox
+} from './helpers';
 
 export default () => {
   it('verify handleEvent function returns correctly if callback passed', () => {
     const cb = sinon.spy();
 
-    const editableTextBox = renderEditableTextBox();
-    editableTextBox.handleEvent(cb);
+    handleEvent(cb, { charCount: 0, text: null });
 
     const event = cb.getCall(0).args[0];
     event.should.be.eql({
@@ -68,5 +73,21 @@ export default () => {
     keyUpAt(editableTextBox.editorEntry);
 
     editableTextBox.editorEntry.innerHTML.should.not.be.eql('<p></p>');
+  });
+
+  it('verify onInput callback is fired when the onInput event occurs', () => {
+    const requestInputCallback = sinon.spy();
+
+    const editableTextBox = renderEditableTextBox({
+      onInput: requestInputCallback
+    });
+
+    // input the editor
+    inputAt(editableTextBox.editorEntry);
+    requestInputCallback.called.should.be.ok();
+
+    // Check if event is passed to onFocus callback.
+    const event = requestInputCallback.getCall(0).args[0];
+    event.should.be.ok();
   });
 };

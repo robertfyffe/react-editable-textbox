@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 
 export default {
   editor: {
-    classNames: PropTypes.object,
     styles: PropTypes.object,
     theme: PropTypes.object,
     aria: PropTypes.object,
@@ -11,23 +10,25 @@ export default {
     allowedAttributes: PropTypes.object,
     allowedTags: PropTypes.array,
     disabled: PropTypes.bool,
+    isGhost: PropTypes.bool,
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
     onInput: PropTypes.func
   },
   editorPlaceholder: {
-    className: PropTypes.string
+    text: PropTypes.string,
+    customStyling: PropTypes.object
   },
   editorEntry: {
+    role: PropTypes.string,
     'aria-placeholder': PropTypes.string,
     'aria-labelledby': PropTypes.string,
-    className: PropTypes.string,
     customStyling: PropTypes.object,
-    onInput: PropTypes.func,
-    charCount: PropTypes.number,
+    text: PropTypes.string,
     tabIndex: PropTypes.number,
     contentEditable: PropTypes.bool,
     suppressContentEditableWarning: PropTypes.bool,
-    spellCheck: PropTypes.bool
+    spellCheck: PropTypes.bool,
+    onInput: PropTypes.func
   }
 };
