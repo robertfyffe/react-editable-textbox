@@ -5,7 +5,6 @@ services:
   - xvfb
 before_script:
   - export DISPLAY=:99.0
-  - export CONTINUOUS_INTEGRATION=true
 script:
   - yarn test:lint
   - yarn coverage
