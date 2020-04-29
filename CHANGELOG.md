@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.13](https://github.com/robertfyffe/react-editable-textbox/compare/v0.0.12...v0.0.13) (2020-04-29)
+
+
+### Bug Fixes
+
+* **components:** event props not firing correctly ([#13](https://github.com/robertfyffe/react-editable-textbox/issues/13)) ([f24fb77](https://github.com/robertfyffe/react-editable-textbox/commit/f24fb777e3f4784c5f2cebbbe9732b8436323a68))
+
 ### [0.0.12](https://github.com/robertfyffe/react-editable-textbox/compare/v0.0.11...v0.0.12) (2020-04-29)
 
 ### [0.0.11](https://github.com/robertfyffe/react-editable-textbox/compare/v0.0.10...v0.0.11) (2020-04-29)
