@@ -31,8 +31,7 @@ module.exports = function (config) {
     },
 
     coverageReporter: {
-      type: coverageType,
-      dir: './coverage/',
+      dir: 'coverage/',
       subdir: '.'
     },
 
