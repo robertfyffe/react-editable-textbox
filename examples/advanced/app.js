@@ -12,7 +12,7 @@ const App = () => (
         margin: '0 0 15px',
         padding: '6px 0 6px 10px',
         textSpacing: '0 0 15px',
-        height: '33px'
+        height: '38px'
       },
       editorPlaceholder: {
         color: '#57a1ae',
@@ -20,14 +20,15 @@ const App = () => (
         padding: '10px 0 6px 14px'
       },
       editorEntry: {
-        borderColor: '#bee5eb',
+        border: '1px solid #bee5eb',
         focusBorderColor: '#0c5460',
         borderRadius: '5px',
         color: '#0c5460',
         fontSize: '16px',
+        lineHeight: '21px',
         padding: '6px 0 6px 10px',
         textSpacing: '0 0 15px',
-        height: '33px',
+        height: '38px',
         zIndex: 10
       }
     }}
@@ -45,16 +46,18 @@ const App = () => (
       'aria-labelledby': 'contentEditableLabel'
     }}
     role={'textbox'}
-    defaultText={'<p>This is an example with default text.</p>'}
+    defaultText={
+      '<p>This is an <script>example</script> with default text.</p>'
+    }
     placeholder={'Placeholder text...'}
     disabled={false}
     allowedTags={['p']}
     allowedAttributes={{
       a: ['href']
     }}
-    onFocus={(text) => {}}
-    onBlur={(text) => {}}
-    onInput={(text) => {}}
+    onFocus={(resp) => {}}
+    onBlur={(resp) => {}}
+    onInput={(resp) => {}}
   />
 );
 

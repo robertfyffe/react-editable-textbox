@@ -20,8 +20,10 @@ const containerCustomStyles = ({ customStyling }) => css`
 
 const Container = styled('div')(containerBaseStyles, containerCustomStyles);
 
-const EditorPlaceholder = ({ elRef, ...rest }) => (
-  <Container ref={elRef} {...rest} />
+const EditorPlaceholder = ({ elRef, text, ...rest }) => (
+  <Container ref={elRef} {...rest}>
+    {text}
+  </Container>
 );
 
 EditorPlaceholder.propTypes = propTypes.editorPlaceholder;

@@ -4,11 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { EditableTextBox } from 'react-editable-textbox';
-import {
-  contentAttribute,
-  renderEditableTextBox,
-  editableTextBoxComponent
-} from './helpers';
+import { contentAttribute, renderEditableTextBox } from './helpers';
 
 export default () => {
   it('has default props', () => {
@@ -81,11 +77,7 @@ export default () => {
 
   it('verify charCount is 12 if text of length 12 is manually inputted', () => {
     const editableTextBox = renderEditableTextBox();
-    editableTextBox.handleOnInput({
-      target: {
-        innerHTML: 'This is text'
-      }
-    });
+    editableTextBox.handleOnInput('This is text');
     editableTextBox.state.charCount.should.be.eql(12);
   });
 

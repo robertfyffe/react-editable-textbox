@@ -8,22 +8,24 @@ export default {
     allowedAttributes: {},
     allowedTags: ['p'],
     disabled: false,
+    isGhost: false,
     onBlur: () => {},
     onFocus: () => {},
     onInput: () => {}
   },
   editorPlaceholder: {
-    className: null,
+    text: null,
     customStyling: {}
   },
   editorEntry: {
     tabIndex: 0,
+    role: 'textbox',
     customStyling: {},
     contentEditable: true,
     suppressContentEditableWarning: true,
     spellCheck: false,
-    className: null,
     disabled: false,
+    text: null,
     onInput: () => {}
   }
 };

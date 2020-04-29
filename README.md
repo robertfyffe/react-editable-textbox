@@ -1,10 +1,18 @@
 # react-content-editable
 
-Accessible contentEditable textbox for React.js
-
 [![Build Status](https://travis-ci.com/robertfyffe/react-editable-textbox.svg?branch=develop)](https://travis-ci.com/robertfyffe/react-editable-textbox)
 ![gzip size](http://img.badgesize.io/https://unpkg.com/@robertfyffe/react-editable-textbox/dist/react-editable-textbox.min.js?compression=gzip)
 [![Coverage Status](https://coveralls.io/repos/github/robertfyffe/react-editable-textbox/badge.svg?branch=develop)](https://coveralls.io/github/robertfyffe/react-editable-textbox?branch=develop)
+
+react-content-editable is a simple, flexible contentEditable textbox built using React.js.
+
+It is extremely simple to use and get started with.
+
+## What does it do?
+
+react-content-editable provides a HTML element with editable text. Included is HTML sanitization
+with the ability to customize to suit your requirements. The editable text will be automatically
+formatted using paragraph and single line break tags.
 
 ## Table of Contents
 
@@ -40,11 +48,12 @@ To install, you can use [npm](https://npmjs.org/) or [yarn](https://yarnpkg.com)
         padding: '6px 0 6px 10px'
       },
       editorEntry: {
-        borderColor: '#f5c6cb',
+        border: '1px solid #f5c6cb',
         focusBorderColor: '#5C656F',
         borderRadius: '5px',
         color: '#721c24',
         fontSize: '16px',
+        lineHeight: '21px',
         padding: '6px 0 6px 10px',
         textSpacing: '0 0 15px',
         height: '33px',
@@ -94,6 +103,11 @@ To install, you can use [npm](https://npmjs.org/) or [yarn](https://yarnpkg.com)
     false
     /* Boolean describing if the textbox should be disabled. */
   }
+  isGhost={
+    false
+    /* Boolean describing if the textbox should be loading with the ghost theme.
+    This attribute is false by default. */
+  }
   allowedTags={
     ['p']
     /* Array of allowed HTML tags for editor.
@@ -107,16 +121,34 @@ To install, you can use [npm](https://npmjs.org/) or [yarn](https://yarnpkg.com)
       All attributes disabled` by default. */
   }
   onFocus={
-    () => console.log('onFocus!')
-    /* Function that will be run when the editor gains focus. */
+    (resp) => console.log('onFocus!', resp)
+    /* Function that will be run when the editor gains focus. 
+      An object will be returned with the following structure:
+      { 
+        charCount: 0,
+        text: 'Resp text'
+      }
+    */
   }
   onBlur={
-    () => console.log('onBlur!')
-    /* Function that will be run when the editor looses focus. */
+    (resp) => console.log('onBlur!', resp)
+    /* Function that will be run when the editor looses focus.
+      An object will be returned with the following structure:
+      { 
+        charCount: 0,
+        text: 'Resp text'
+      }
+    */
   }
   onInput={
-    () => console.log('onInput!')
-    /* Function that will be run when text is inputted. */
+    (resp) => console.log('onInput!', resp)
+    /* Function that will be run when text is inputted.
+      An object will be returned with the following structure:
+      { 
+        charCount: 0,
+        text: 'Resp text'
+      }
+    */
   }
 />
 ```

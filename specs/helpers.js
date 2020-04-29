@@ -23,6 +23,11 @@ export const focusAt = Simulate.focus;
 export const blurAt = Simulate.blur;
 
 /**
+ * Dispatch a 'onInput' event at a node.
+ */
+export const inputAt = Simulate.input;
+
+/**
  * Dispatch a 'keyUp' event at a node.
  */
 export const keyUpAt = Simulate.keyUp;

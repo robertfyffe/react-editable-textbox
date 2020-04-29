@@ -6,10 +6,12 @@ import propTypes from './propTypes';
 import defaultProps from './defaultProps';
 
 const containerBaseStyles = ({ theme }) => css`
-  border: 1px solid ${theme.editorEntry.borderColor};
+  border: ${theme.editorEntry.border};
   border-radius: ${theme.editorEntry.borderRadius};
   color: ${theme.editorEntry.color};
   font-size: ${theme.editorEntry.fontSize};
+  line-height: ${theme.editorEntry.lineHeight};
+  outline: ${theme.editorEntry.outline};
   padding: ${theme.editorEntry.padding};
   min-height: ${theme.editorEntry.height};
   z-index: ${theme.editorEntry.zIndex};
