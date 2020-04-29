@@ -11,6 +11,7 @@ examples/__build__
 coverage
 yarn.lock
 yarn-error.log
+.eslintcache
 
 ## Built folders
 lib

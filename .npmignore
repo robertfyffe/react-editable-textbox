@@ -11,6 +11,8 @@ bootstrap.sh
 bower.json
 karma.conf.js
 yarn.lock
+yarn-error.log
+.eslintcache
 prettier.config.js
 webpack.*
 .idea/*
