@@ -1,12 +1,11 @@
 language: node_js
 node_js: node
 cache: yarn
-env:
-  - CONTINUOUS_INTEGRATION=true
 services:
   - xvfb
 before_script:
   - export DISPLAY=:99.0
+  - export CONTINUOUS_INTEGRATION=true
 script:
   - yarn test:lint
   - yarn coverage

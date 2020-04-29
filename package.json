@@ -11,7 +11,7 @@
     "test:lint:fix": "yarn test:lint --fix",
     "release": "standard-version",
     "commit": "git-cz",
-    "coverage": "cross-env NODE_ENV=test karma start --single-run cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js 2>/dev/null"
+    "coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js 2>/dev/null"
   },
   "repository": {
     "type": "git",
