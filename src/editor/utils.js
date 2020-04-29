@@ -9,13 +9,6 @@ const getEvent = (ev, props) => callEvent(ev)(props);
 
 export const handleEvent = (ev, props) => getEvent(ev, props);
 
-export const createEvents = (events, props) =>
-  events.map((ev) => {
-    return {
-      [ev]: handleEvent(ev, props)
-    };
-  });
-
 export const cleanHtml = ({ text, allowedAttributes, allowedTags, tags }) => {
   return sanitize(text, {
     ALLOWED_ATTR: allowedAttributes,
@@ -27,7 +20,7 @@ export const setText = (text) => text || DEFAULT_ELEMENT;
 
 export const getCustomStyling = (element, styles) => {
   return {
-    customStyling: styles[element]
+    customStyling: styles[element] || {}
   };
 };
 
