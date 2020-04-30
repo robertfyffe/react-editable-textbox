@@ -19,7 +19,7 @@ export default () => {
     props.theme.should.be.eql({});
     props.role.should.be.eql('textbox');
     props.placeholder.should.be.eql('Placeholder text...');
-    props.allowedAttributes.should.be.eql({});
+    props.allowedAttributes.should.be.eql([]);
     props.allowedTags.should.be.eql(['p']);
     props.disabled.should.not.be.ok();
 

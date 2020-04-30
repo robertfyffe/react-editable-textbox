@@ -7,7 +7,7 @@ export default {
     aria: PropTypes.object,
     role: PropTypes.string,
     placeholder: PropTypes.string,
-    allowedAttributes: PropTypes.object,
+    allowedAttributes: PropTypes.array,
     allowedTags: PropTypes.array,
     disabled: PropTypes.bool,
     isGhost: PropTypes.bool,
