@@ -53,11 +53,18 @@ class Editor extends PureComponent {
 
     this.state = {
       charCount: defaultTextCount || 0,
-      text: defaultText || null
+      text: defaultText || null,
+      component: null
     };
   }
 
   componentDidMount = () => this.setInnerHTML(this.props.defaultText);
+
+  componentDidUpdate = prevProps => {
+    if (prevProps.html !== this.props.html) {
+      this.setComponent(this.props.html);
+    }
+  };
 
   setCharCount = charCount =>
     this.setState({
@@ -67,6 +74,11 @@ class Editor extends PureComponent {
   setText = text =>
     this.setState({
       text
+    });
+
+  setComponent = component =>
+    this.setState({
+      component
     });
 
   formatText = ({ ...props }) =>
@@ -119,7 +131,9 @@ class Editor extends PureComponent {
 
   render = () => {
     const { theme, isGhost } = this.props;
-    const isEmpty = !this.state.charCount;
+    const { charCount, component } = this.state;
+    const isEmpty = !charCount;
+    const isComponent = !!component;
 
     return (
       <ThemeProvider
@@ -135,7 +149,9 @@ class Editor extends PureComponent {
           {isEmpty && (
             <EditorPlaceholder {...this.getProps(EDITOR_PLACEHOLDER)} />
           )}
-          <EditorEntry {...this.getProps(EDITOR_ENTRY)} />
+          <EditorEntry {...this.getProps(EDITOR_ENTRY)}>
+            {isComponent ? component : null}
+          </EditorEntry>
         </Container>
       </ThemeProvider>
     );
