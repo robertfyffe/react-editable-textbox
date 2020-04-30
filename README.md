@@ -114,14 +114,12 @@ To install, you can use [npm](https://npmjs.org/) or [yarn](https://yarnpkg.com)
       This attribute is `['p']` by default. */
   }
   allowedAttributes={
-    {
-      a: ['href']
-    }
+    []
     /* Array of allowed HTML attributes for editor.
       All attributes disabled` by default. */
   }
   onFocus={
-    (resp) => console.log('onFocus!', resp)
+    resp => console.log('onFocus!', resp)
     /* Function that will be run when the editor gains focus. 
       An object will be returned with the following structure:
       { 
@@ -131,7 +129,7 @@ To install, you can use [npm](https://npmjs.org/) or [yarn](https://yarnpkg.com)
     */
   }
   onBlur={
-    (resp) => console.log('onBlur!', resp)
+    resp => console.log('onBlur!', resp)
     /* Function that will be run when the editor looses focus.
       An object will be returned with the following structure:
       { 
@@ -141,7 +139,7 @@ To install, you can use [npm](https://npmjs.org/) or [yarn](https://yarnpkg.com)
     */
   }
   onInput={
-    (resp) => console.log('onInput!', resp)
+    resp => console.log('onInput!', resp)
     /* Function that will be run when text is inputted.
       An object will be returned with the following structure:
       { 

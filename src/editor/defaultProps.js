@@ -5,7 +5,7 @@ export default {
     theme: {},
     role: 'textbox',
     placeholder: 'Placeholder text...',
-    allowedAttributes: {},
+    allowedAttributes: [],
     allowedTags: ['p'],
     disabled: false,
     isGhost: false,
