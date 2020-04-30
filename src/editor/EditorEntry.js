@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
@@ -34,10 +34,12 @@ const containerCustomStyles = ({ customStyling }) => css`
 
 const Container = styled('div')(containerBaseStyles, containerCustomStyles);
 
-const EditorEntry = ({ elRef, ...rest }) => <Container ref={elRef} {...rest} />;
+const EditorEntry = forwardRef((rest, ref) => (
+  <Container ref={ref} {...rest} />
+));
 
 EditorEntry.propTypes = propTypes.editorEntry;
-
 EditorEntry.defaultProps = defaultProps.editorEntry;
+EditorEntry.displayName = 'EditorEntry';
 
 export default EditorEntry;

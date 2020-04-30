@@ -5,5 +5,9 @@ module.exports = {
   useTabs: false,
   trailingComma: 'none',
   bracketSpacing: true,
-  jsxBracketSameLine: false
+  jsxBracketSameLine: false,
+  arrowParens: 'avoid',
+  singleAttributePerLine: true,
+  endOfLine: 'lf',
+  printWidth: 80
 };

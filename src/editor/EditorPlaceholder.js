@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
@@ -20,14 +20,14 @@ const containerCustomStyles = ({ customStyling }) => css`
 
 const Container = styled('div')(containerBaseStyles, containerCustomStyles);
 
-const EditorPlaceholder = ({ elRef, text, ...rest }) => (
-  <Container ref={elRef} {...rest}>
+const EditorPlaceholder = forwardRef(({ text, ...rest }, ref) => (
+  <Container ref={ref} {...rest}>
     {text}
   </Container>
-);
+));
 
 EditorPlaceholder.propTypes = propTypes.editorPlaceholder;
-
 EditorPlaceholder.defaultProps = defaultProps.editorPlaceholder;
+EditorPlaceholder.displayName = 'EditorPlaceholder';
 
 export default EditorPlaceholder;
