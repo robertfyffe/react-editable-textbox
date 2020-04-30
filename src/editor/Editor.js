@@ -6,13 +6,7 @@ import { ThemeProvider } from 'emotion-theming';
 import propTypes from './propTypes';
 import defaultProps from './defaultProps';
 import { elements } from './constants';
-import {
-  cleanHtml,
-  getTheme,
-  getCustomStyling,
-  handleEvent,
-  setText
-} from './utils';
+import { cleanHtml, getTheme, setText, propManager } from './utils';
 import { allThemes } from '../themes';
 
 import EditorPlaceholder from './EditorPlaceholder';
@@ -65,16 +59,12 @@ class Editor extends PureComponent {
 
   componentDidMount = () => this.setInnerHTML(this.props.defaultText);
 
-  createRef = (ref, name) => {
-    this[name] = ref;
-  };
-
-  setCharCount = (charCount) =>
+  setCharCount = charCount =>
     this.setState({
       charCount
     });
 
-  setText = (text) =>
+  setText = text =>
     this.setState({
       text
     });
@@ -85,73 +75,51 @@ class Editor extends PureComponent {
       ...this.cleanProps
     });
 
-  updateStateText = (text) =>
+  updateStateText = text =>
     this.setText(
       this.formatText({
         text
       })
     );
 
-  removeAllHtml = (text) =>
+  removeAllHtml = text =>
     this.formatText({
       text,
       tags: []
     });
 
-  getCharCount = (text) => this.removeAllHtml(text).length;
+  getCharCount = text => this.removeAllHtml(text).length;
 
-  setInnerHTML = (text) => {
+  setInnerHTML = text => {
     this.editorEntry.innerHTML = setText(text);
   };
 
-  handleOnInput = (text) => {
+  handleOnInput = text => {
     this.updateStateText(text);
     this.setCharCount(this.getCharCount(text));
   };
 
-  render = () => {
-    const {
-      styles,
-      disabled,
-      theme,
-      placeholder,
-      aria,
-      role,
-      isGhost,
-      onFocus,
-      onBlur,
-      onInput
-    } = this.props;
-    const isEmpty = !this.state.charCount;
-
-    const propManager = {
-      [EDITOR]: {
-        ref: (ref) => this.createRef(ref, EDITOR),
-        onFocus: () => handleEvent(onFocus, this.state),
-        onBlur: () => handleEvent(onBlur, this.state),
-        ...getCustomStyling(EDITOR, styles),
-        disabled
-      },
-      [EDITOR_PLACEHOLDER]: {
-        elRef: (ref) => this.createRef(ref, EDITOR_PLACEHOLDER),
-        ...getCustomStyling(EDITOR_PLACEHOLDER, styles),
-        text: placeholder
-      },
-      [EDITOR_ENTRY]: {
-        elRef: (ref) => this.createRef(ref, EDITOR_ENTRY),
-        onInput: ({ target }) => {
-          this.handleOnInput(target.innerHTML);
-          handleEvent(onInput, this.state);
-        },
-        onKeyUp: () => isEmpty && this.setInnerHTML(),
-        ...getCustomStyling(EDITOR_ENTRY, styles),
-        text: this.state.text,
-        role,
-        ...aria
+  getProps = element => {
+    const allProps = propManager({
+      props: this.props,
+      state: this.state,
+      handlers: {
+        setHTML: this.setInnerHTML,
+        onInput: this.handleOnInput
       }
-    };
+    });
 
-    const getProps = (element) => propManager[element];
+    return {
+      ref: ref => {
+        this[element] = ref;
+      },
+      ...allProps[element]
+    };
+  };
+
+  render = () => {
+    const { theme, isGhost } = this.props;
+    const isEmpty = !this.state.charCount;
 
     return (
       <ThemeProvider
@@ -163,9 +131,11 @@ class Editor extends PureComponent {
           isGhost
         })}
       >
-        <Container {...getProps(EDITOR)}>
-          {isEmpty && <EditorPlaceholder {...getProps(EDITOR_PLACEHOLDER)} />}
-          <EditorEntry {...getProps(EDITOR_ENTRY)} />
+        <Container {...this.getProps(EDITOR)}>
+          {isEmpty && (
+            <EditorPlaceholder {...this.getProps(EDITOR_PLACEHOLDER)} />
+          )}
+          <EditorEntry {...this.getProps(EDITOR_ENTRY)} />
         </Container>
       </ThemeProvider>
     );
