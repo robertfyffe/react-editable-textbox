@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.16](https://github.com/robertfyffe/react-editable-textbox/compare/v0.0.15...v0.0.16) (2020-05-03)
+
+
+### Features
+
+* **components:** adding the ability to pass in text as a React component ([#16](https://github.com/robertfyffe/react-editable-textbox/issues/16)) ([101c93c](https://github.com/robertfyffe/react-editable-textbox/commit/101c93cad908b0fc420388125797dad78661abf7))
+
 ### [0.0.15](https://github.com/robertfyffe/react-editable-textbox/compare/v0.0.14...v0.0.15) (2020-04-30)
 
 
