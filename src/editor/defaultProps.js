@@ -5,13 +5,13 @@ export default {
     theme: {},
     role: 'textbox',
     placeholder: 'Placeholder text...',
+    defaultText: null,
     allowedAttributes: [],
     allowedTags: ['p'],
     disabled: false,
     isGhost: false,
     onBlur: () => {},
-    onFocus: () => {},
-    onInput: () => {}
+    onFocus: () => {}
   },
   editorPlaceholder: {
     text: null,
@@ -25,7 +25,6 @@ export default {
     suppressContentEditableWarning: true,
     spellCheck: false,
     disabled: false,
-    text: null,
-    onInput: () => {}
+    text: null
   }
 };

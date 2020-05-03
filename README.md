@@ -18,6 +18,7 @@ formatted using paragraph and single line break tags.
 
 - [Installation](#installation)
 - [API documentation](#api-documentation)
+- [Advanced](#advanced)
 - [Examples](#examples)
 
 ## Installation
@@ -114,7 +115,7 @@ To install, you can use [npm](https://npmjs.org/) or [yarn](https://yarnpkg.com)
       This attribute is `['p']` by default. */
   }
   allowedAttributes={
-    ['a']
+    []
     /* Array of allowed HTML attributes for editor.
       All attributes disabled` by default. */
   }
@@ -149,6 +150,15 @@ To install, you can use [npm](https://npmjs.org/) or [yarn](https://yarnpkg.com)
     */
   }
 />
+```
+
+## Advanced
+
+The component is configured to handle the children prop. This is useful in scenarios where you
+want full control over the content of the textbox from the consuming component.
+
+```jsx
+<EditableTextBox>{this.state.html}</EditableTextBox>
 ```
 
 ## Examples

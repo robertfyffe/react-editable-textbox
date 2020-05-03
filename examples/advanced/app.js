@@ -52,12 +52,10 @@ const App = () => (
     placeholder={'Placeholder text...'}
     disabled={false}
     allowedTags={['p']}
-    allowedAttributes={{
-      a: ['href']
-    }}
-    onFocus={(resp) => console.log(resp)}
-    onBlur={(resp) => console.log(resp)}
-    onInput={(resp) => console.log(resp)}
+    allowedAttributes={['style']}
+    onFocus={resp => console.log(resp)}
+    onBlur={resp => console.log(resp)}
+    onInput={resp => console.log(resp)}
   />
 );
 

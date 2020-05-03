@@ -7,6 +7,7 @@ export default {
     html: PropTypes.node,
     aria: PropTypes.object,
     role: PropTypes.string,
+    defaultText: PropTypes.string,
     placeholder: PropTypes.string,
     allowedAttributes: PropTypes.array,
     allowedTags: PropTypes.array,
@@ -25,11 +26,14 @@ export default {
     'aria-placeholder': PropTypes.string,
     'aria-labelledby': PropTypes.string,
     customStyling: PropTypes.object,
-    text: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     tabIndex: PropTypes.number,
     contentEditable: PropTypes.bool,
     suppressContentEditableWarning: PropTypes.bool,
     spellCheck: PropTypes.bool,
     onInput: PropTypes.func
+  },
+  editorStash: {
+    children: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
   }
 };

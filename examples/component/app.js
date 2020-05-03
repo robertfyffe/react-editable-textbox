@@ -1,58 +1,67 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import { parse } from 'node-html-parser';
 import { EditableTextBox } from 'react-editable-textbox';
 
-class App extends Component {
+const createElement = ({ props, children }) =>
+  React.createElement('p', props, children);
+
+const initialState = {
+  component: [
+    createElement({
+      props: {
+        key: 0
+      }
+    })
+  ]
+};
+
+const allowedAttributes = ['style'];
+
+class App extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      component: null,
-      html: null
-    };
+    this.state = initialState;
   }
 
-  convertToComponent = ({ childNodes }, props) =>
+  convertToComponent = ({ childNodes }) =>
     childNodes.map((node, key) =>
-      React.createElement(
-        'p',
-        {
+      createElement({
+        props: {
           key,
           style: {
-            color: 'red'
+            color: 'blue'
           }
         },
-        node.text
-      )
+        children: node.text
+      })
     );
 
-  handleOnInput = resp =>
+  handleOnInput = ({ charCount, text }) => {
+    if (!charCount) {
+      return this.setState(initialState);
+    }
+
     this.setState({
-      component: this.convertToComponent(parse(resp.text))
+      component: this.convertToComponent(parse(text))
     });
-
-  handleOnBlur = () =>
-    this.setState({
-      html: this.state.component
-    });
-
-  render = () => {
-    const { html } = this.state;
-
-    return (
-      <div style={{ maxWidth: '400px' }}>
-        <EditableTextBox
-          html={html}
-          onInput={this.handleOnInput}
-          onBlur={this.handleOnBlur}
-          allowedTags={['p', 'span']}
-          allowedAttributes={['href', 'style']}
-          isGhost
-        />
-      </div>
-    );
   };
+
+  render = () => (
+    <EditableTextBox
+      onInput={this.handleOnInput}
+      allowedAttributes={allowedAttributes}
+      onBlur={text => console.log('Blurred', text)}
+      onFocus={text => console.log('Focussed', text)}
+      aria={{
+        'aria-placeholder': 'Content Editable Textbox',
+        'aria-labelledby': 'contentEditableLabel'
+      }}
+      isGhost
+    >
+      {this.state.component}
+    </EditableTextBox>
+  );
 }
 
 const appElement = document.getElementById('example');

@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { EditableTextBox } from 'react-editable-textbox';
 import TestUtils from 'react-dom/test-utils';
+
+import { EditableTextBox } from 'react-editable-textbox';
+import { allThemes } from '../src/themes';
 
 const divStack = [];
 
@@ -38,38 +40,34 @@ export const keyUpAt = Simulate.keyUp;
  * @param {React} component A react instance.
  * @return {DOMElement}
  */
-const editableTextBoxComponent = (component) => (instance) =>
-  instance[component];
+const editableTextBoxComponent = component => instance => instance[component];
 
 /**
  * Returns an attribute of a rendered react tree.
  * @param {React} component A react instance.
  * @return {String}
  */
-const getEditableTextBoxAttribute = (component) => (instance, attr) =>
+const getEditableTextBoxAttribute = component => (instance, attr) =>
   editableTextBoxComponent(component)(instance).getAttribute(attr);
 
 /**
  * Returns the editor.
- * @param {Editor} Editor EditorTextBox instance.
  * @return {DOMElement}
  */
-export const editorContent = editableTextBoxComponent('editor');
+export const editorContainer = editableTextBoxComponent('container');
 
 /**
- * Returns the editor.
- * @param {Editor} EditorEntry EditorTextBox instance.
+ * Returns the editor entry.
  * @return {DOMElement}
  */
-export const editorEntry = editableTextBoxComponent('editorEntry');
+export const entryComponent = editableTextBoxComponent('entry');
 
 /**
  * Return an attribute of editable text box.
  * @param {EditableTextBox} editor EditableTextBox instance.
  * @return {String}
  */
-export const contentAttribute = (content) =>
-  getEditableTextBoxAttribute(content);
+export const contentAttribute = content => getEditableTextBoxAttribute(content);
 
 export const renderEditableTextBox = (props, callback) => {
   const editorProps = { ...props };
@@ -85,3 +83,48 @@ export const renderEditableTextBox = (props, callback) => {
     callback
   );
 };
+
+export const unmountEditableTextBox = function () {
+  const currentDiv = divStack.pop();
+  ReactDOM.unmountComponentAtNode(currentDiv);
+  document.body.removeChild(currentDiv);
+};
+
+export const themeSchema = {
+  editor: {},
+  editorPlaceholder: {},
+  editorEntry: {}
+};
+
+export const defaultTheme = allThemes;
+
+export const userTheme = {
+  editor: {
+    background: 'userProvided',
+    borderRadius: 'userProvided',
+    fontSize: 'userProvided',
+    margin: 'userProvided',
+    padding: 'userProvided',
+    textSpacing: 'userProvided',
+    height: 'userProvided'
+  },
+  editorPlaceholder: {
+    color: 'userProvided',
+    fontSize: 'userProvided',
+    padding: 'userProvided'
+  },
+  editorEntry: {
+    border: 'userProvided',
+    focusBorderColor: 'userProvided',
+    borderRadius: 'userProvided',
+    color: 'userProvided',
+    fontSize: 'userProvided',
+    lineHeight: 'userProvided',
+    padding: 'userProvided',
+    textSpacing: 'userProvided',
+    height: 'userProvided',
+    zIndex: 'userProvided'
+  }
+};
+
+export const ghostTheme = allThemes.ghost;
