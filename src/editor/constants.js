@@ -2,11 +2,17 @@
  * Elements
  */
 
-const EDITOR = 'editor';
-const EDITOR_PLACEHOLDER = 'editorPlaceholder';
-const EDITOR_ENTRY = 'editorEntry';
+const CONTAINER = 'container';
+const PLACEHOLDER = 'placeholder';
+const ENTRY = 'entry';
+const STASH = 'stash';
 
-export const elements = { EDITOR, EDITOR_PLACEHOLDER, EDITOR_ENTRY };
+export const elements = {
+  CONTAINER,
+  PLACEHOLDER,
+  ENTRY,
+  STASH
+};
 
 /**
  * HTML Elements
@@ -15,3 +21,11 @@ export const elements = { EDITOR, EDITOR_PLACEHOLDER, EDITOR_ENTRY };
 const DEFAULT_ELEMENT = '<p></p>';
 
 export const htmlElements = { DEFAULT_ELEMENT };
+
+/**
+ * Timers
+ */
+
+const INPUT_WAIT_INTERVAL = 700;
+
+export const timers = { INPUT_WAIT_INTERVAL };

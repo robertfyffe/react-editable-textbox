@@ -3,16 +3,17 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { ThemeProvider } from 'emotion-theming';
 
+import * as utils from './utils';
 import propTypes from './propTypes';
 import defaultProps from './defaultProps';
 import { elements } from './constants';
-import { cleanHtml, getTheme, setText, propManager } from './utils';
 import { allThemes } from '../themes';
 
 import EditorPlaceholder from './EditorPlaceholder';
 import EditorEntry from './EditorEntry';
+import EditorStash from './EditorStash';
 
-const { EDITOR, EDITOR_PLACEHOLDER, EDITOR_ENTRY } = elements;
+const { CONTAINER, PLACEHOLDER, ENTRY, STASH } = elements;
 
 const containerBaseStyles = ({ theme }) => css`
   background: ${theme.editor.background};
@@ -39,73 +40,94 @@ const Container = styled('div')`
   ${containerCustomStyles};
 `;
 
+const initialState = ({ defaultText }) => {
+  const defaultTextCount = defaultText && utils.getCharCount(defaultText);
+  return {
+    charCount: defaultTextCount || 0
+  };
+};
+
 class Editor extends PureComponent {
   constructor(props) {
     super(props);
-    const { defaultText, allowedTags, allowedAttributes } = props;
 
-    this.cleanProps = {
-      allowedTags,
-      allowedAttributes
+    const { allowedAttributes, allowedTags } = props;
+
+    this.timer = null;
+
+    this.parseProps = {
+      default: {
+        allowedAttributes,
+        allowedTags
+      },
+      clean: {
+        allowedAttributes: [],
+        allowedTags: []
+      }
     };
 
-    const defaultTextCount = defaultText && this.getCharCount(defaultText);
-
-    this.state = {
-      charCount: defaultTextCount || 0,
-      text: defaultText || null
-    };
+    this.state = initialState(this.props);
   }
 
-  componentDidMount = () => this.setInnerHTML(this.props.defaultText);
+  componentDidMount = () =>
+    this.setInnerHTML(this.parseProps.default, this.props.defaultText);
 
-  setCharCount = charCount =>
-    this.setState({
-      charCount
-    });
-
-  setText = text =>
-    this.setState({
-      text
-    });
-
-  formatText = ({ ...props }) =>
-    cleanHtml({
-      ...props,
-      ...this.cleanProps
-    });
-
-  updateStateText = text =>
-    this.setText(
-      this.formatText({
-        text
-      })
-    );
-
-  removeAllHtml = text =>
-    this.formatText({
-      text,
-      tags: []
-    });
-
-  getCharCount = text => this.removeAllHtml(text).length;
-
-  setInnerHTML = text => {
-    this.editorEntry.innerHTML = setText(text);
+  componentDidUpdate = prevProps => {
+    if (this.props.children !== prevProps.children) {
+      this.setInnerHTML(this.state.charCount, this.stash.innerHTML);
+      utils.replaceCaret(this.entry);
+    }
   };
 
+  setInnerHTML = (props, text) => {
+    const getText = utils.handleGetText(props);
+    this.entry.innerHTML = getText(text);
+  };
+
+  initEventProps = inputValue =>
+    utils.getEventProps({ props: this.parseProps, inputValue });
+
+  handleOnBlur = text =>
+    utils.publishEvent(this.initEventProps(text), this.props.onBlur);
+
+  handleOnFocus = text =>
+    utils.publishEvent(this.initEventProps(text), this.props.onFocus);
+
+  handleOnKeyUp = () =>
+    !this.state.charCount && this.setInnerHTML(this.parseProps.clean);
+
   handleOnInput = text => {
-    this.updateStateText(text);
-    this.setCharCount(this.getCharCount(text));
+    const charCount = utils.getCharCount(text);
+    this.setState({ charCount });
+
+    const { onInput } = this.props;
+    if (!onInput) {
+      return;
+    }
+
+    clearTimeout(this.timer);
+    this.timer = utils.publishOnInput({
+      parse: this.parseProps,
+      charCount,
+      text,
+      onInput
+    });
   };
 
   getProps = element => {
-    const allProps = propManager({
-      props: this.props,
-      state: this.state,
+    const allProps = utils.propManager({
+      ...this.props,
+      elements: {
+        container: CONTAINER,
+        placeholder: PLACEHOLDER,
+        entry: ENTRY,
+        stash: STASH
+      },
       handlers: {
-        setHTML: this.setInnerHTML,
-        onInput: this.handleOnInput
+        onInput: this.handleOnInput,
+        onFocus: this.handleOnFocus,
+        onBlur: this.handleOnBlur,
+        onKeyUp: this.handleOnKeyUp
       }
     });
 
@@ -123,7 +145,7 @@ class Editor extends PureComponent {
 
     return (
       <ThemeProvider
-        theme={getTheme({
+        theme={utils.getTheme({
           themes: {
             ...allThemes,
             user: theme
@@ -131,11 +153,10 @@ class Editor extends PureComponent {
           isGhost
         })}
       >
-        <Container {...this.getProps(EDITOR)}>
-          {isEmpty && (
-            <EditorPlaceholder {...this.getProps(EDITOR_PLACEHOLDER)} />
-          )}
-          <EditorEntry {...this.getProps(EDITOR_ENTRY)} />
+        <Container {...this.getProps(CONTAINER)}>
+          {isEmpty && <EditorPlaceholder {...this.getProps(PLACEHOLDER)} />}
+          <EditorEntry {...this.getProps(ENTRY)} />
+          <EditorStash {...this.getProps(STASH)} />
         </Container>
       </ThemeProvider>
     );

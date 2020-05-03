@@ -1,88 +1,313 @@
 /* eslint-env mocha */
-import should from 'should';
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-import { EditableTextBox } from 'react-editable-textbox';
-import { contentAttribute, renderEditableTextBox } from './helpers';
+import {
+  contentAttribute,
+  renderEditableTextBox,
+  unmountEditableTextBox
+} from './helpers';
 
 export default () => {
-  it('has default props', () => {
-    const node = document.createElement('div');
+  describe('Public API', () => {
+    describe('Default props', () => {
+      it('aria should be {}', () => {
+        const editableTextBox = renderEditableTextBox();
+        const { props } = editableTextBox;
 
-    // eslint-disable-next-line react/no-render-return-value
-    const editableTextBox = ReactDOM.render(<EditableTextBox />, node);
-    const { props } = editableTextBox;
+        props.aria.should.be.eql({});
 
-    props.aria.should.be.eql({});
-    props.styles.should.be.eql({});
-    props.theme.should.be.eql({});
-    props.role.should.be.eql('textbox');
-    props.placeholder.should.be.eql('Placeholder text...');
-    props.allowedAttributes.should.be.eql([]);
-    props.allowedTags.should.be.eql(['p']);
-    props.disabled.should.not.be.ok();
+        unmountEditableTextBox();
+      });
+      it('styles should be {}', () => {
+        const editableTextBox = renderEditableTextBox();
+        const { props } = editableTextBox;
 
-    ReactDOM.unmountComponentAtNode(node);
-  });
+        props.styles.should.be.eql({});
 
-  // eslint-disable-next-line max-len
-  it('renders the editable text box as disabled when provided', () => {
-    const editableTextBox = renderEditableTextBox({ disabled: true });
-    contentAttribute('editor')(editableTextBox, 'disabled').should.be.eql('');
-  });
+        unmountEditableTextBox();
+      });
+      it('theme should be {}', () => {
+        const editableTextBox = renderEditableTextBox();
+        const { props } = editableTextBox;
 
-  // eslint-disable-next-line max-len
-  it('renders the editable text box with the default aria role when not provided', () => {
-    const editableTextBox = renderEditableTextBox();
-    contentAttribute('editorEntry')(editableTextBox, 'role').should.be.eql(
-      'textbox'
-    );
-  });
+        props.theme.should.be.eql({});
 
-  it('verify default prop of onFocus', () => {
-    const editableTextBox = renderEditableTextBox();
-    editableTextBox.props.onFocus.should.be.ok();
-  });
+        unmountEditableTextBox();
+      });
+      it('role should be textbox', () => {
+        const editableTextBox = renderEditableTextBox();
+        const { props } = editableTextBox;
 
-  it('verify default prop of onBlur', () => {
-    const editableTextBox = renderEditableTextBox();
-    editableTextBox.props.onBlur.should.be.ok();
-  });
+        props.placeholder.should.be.eql('Placeholder text...');
 
-  it('verify default prop of onInput', () => {
-    const editableTextBox = renderEditableTextBox();
-    editableTextBox.props.onInput.should.be.ok();
-  });
+        unmountEditableTextBox();
+      });
+      it('placeholder should be `Placeholder text...`', () => {
+        const editableTextBox = renderEditableTextBox();
+        const { props } = editableTextBox;
 
-  it('verify charCount is zero if text empty', () => {
-    const editableTextBox = renderEditableTextBox();
-    editableTextBox.state.charCount.should.be.eql(0);
-  });
+        props.placeholder.should.be.eql('Placeholder text...');
 
-  it('verify charCount is 12 if default text is provided with length 12', () => {
-    const editableTextBox = renderEditableTextBox({
-      defaultText: 'This is text'
+        unmountEditableTextBox();
+      });
+      it(`defaultText should be null`, () => {
+        const editableTextBox = renderEditableTextBox();
+        const { props } = editableTextBox;
+
+        should.not.exist(props.defaultText);
+
+        unmountEditableTextBox();
+      });
+      it(`isGhost should be false`, () => {
+        const editableTextBox = renderEditableTextBox();
+        const { props } = editableTextBox;
+
+        props.isGhost.should.be.eql(false);
+
+        unmountEditableTextBox();
+      });
+      it('allowedAttributes should be []', () => {
+        const editableTextBox = renderEditableTextBox();
+        const { props } = editableTextBox;
+
+        props.allowedAttributes.should.be.eql([]);
+
+        unmountEditableTextBox();
+      });
+      it(`allowedTags should be ['p']`, () => {
+        const editableTextBox = renderEditableTextBox();
+        const { props } = editableTextBox;
+
+        props.allowedTags.should.be.eql(['p']);
+
+        unmountEditableTextBox();
+      });
+      it('disabled should be false', () => {
+        const editableTextBox = renderEditableTextBox();
+        const { props } = editableTextBox;
+
+        props.disabled.should.not.be.ok();
+
+        unmountEditableTextBox();
+      });
     });
-    editableTextBox.state.charCount.should.be.eql(12);
-  });
 
-  // eslint-disable-next-line max-len
-  it('verify charCount is 12 if default text with length 12 is provided with extra HTML elements', () => {
-    const editableTextBox = renderEditableTextBox({
-      defaultText: '<p>This is text</p>'
+    describe('Provided Props', () => {
+      it('aria-placeholder should be `Content Editable Textbox`', () => {
+        const editableTextBox = renderEditableTextBox({
+          aria: {
+            'aria-placeholder': 'Content Editable Textbox'
+          }
+        });
+
+        contentAttribute('entry')(
+          editableTextBox,
+          'aria-placeholder'
+        ).should.be.eql('Content Editable Textbox');
+
+        unmountEditableTextBox();
+      });
+      it('aria-labelledby should be `contentEditableLabel`', () => {
+        const editableTextBox = renderEditableTextBox({
+          aria: {
+            'aria-labelledby': 'contentEditableLabel'
+          }
+        });
+
+        contentAttribute('entry')(
+          editableTextBox,
+          'aria-labelledby'
+        ).should.be.eql('contentEditableLabel');
+
+        unmountEditableTextBox();
+      });
+
+      it('styles should be {...}', () => {
+        const editableTextBox = renderEditableTextBox({
+          styles: {
+            editorPlaceholder: {
+              fontStyle: 'italic'
+            },
+            editorEntry: {
+              borderWidth: '4px',
+              outline: 0
+            }
+          }
+        });
+
+        editableTextBox.props.styles.should.be.eql({
+          editorPlaceholder: {
+            fontStyle: 'italic'
+          },
+          editorEntry: {
+            borderWidth: '4px',
+            outline: 0
+          }
+        });
+
+        unmountEditableTextBox();
+      });
+      it('theme should be {...}', () => {
+        const editableTextBox = renderEditableTextBox({
+          theme: {
+            editor: {
+              background: '#f8d7da',
+              borderRadius: '5px',
+              fontSize: '16px',
+              margin: '0 0 15px',
+              padding: '6px 0 6px 10px',
+              textSpacing: '0 0 15px',
+              height: '33px'
+            }
+          }
+        });
+
+        editableTextBox.props.theme.should.be.eql({
+          editor: {
+            background: '#f8d7da',
+            borderRadius: '5px',
+            fontSize: '16px',
+            margin: '0 0 15px',
+            padding: '6px 0 6px 10px',
+            textSpacing: '0 0 15px',
+            height: '33px'
+          }
+        });
+
+        unmountEditableTextBox();
+      });
+      it('role should be button', () => {
+        const editableTextBox = renderEditableTextBox({
+          role: 'button'
+        });
+
+        contentAttribute('entry')(editableTextBox, 'role').should.be.eql(
+          'button'
+        );
+
+        unmountEditableTextBox();
+      });
+      it('placeholder should be `Placeholder provided`', () => {
+        const editableTextBox = renderEditableTextBox({
+          placeholder: 'Placeholder provided'
+        });
+
+        editableTextBox.props.placeholder.should.be.eql('Placeholder provided');
+
+        unmountEditableTextBox();
+      });
+      it('defaultText should be `Default text provided`', () => {
+        const editableTextBox = renderEditableTextBox({
+          defaultText: 'Default text provided'
+        });
+
+        editableTextBox.props.defaultText.should.be.eql(
+          'Default text provided'
+        );
+
+        unmountEditableTextBox();
+      });
+      it(`isGhost should be true`, () => {
+        const editableTextBox = renderEditableTextBox({
+          isGhost: true
+        });
+
+        editableTextBox.props.isGhost.should.be.eql(true);
+
+        unmountEditableTextBox();
+      });
+      it(`allowedAttributes should be ['style']`, () => {
+        const editableTextBox = renderEditableTextBox({
+          allowedAttributes: ['style']
+        });
+
+        editableTextBox.props.allowedAttributes.should.be.eql(['style']);
+
+        unmountEditableTextBox();
+      });
+      it(`allowedTags should be ['p', 'span']`, () => {
+        const editableTextBox = renderEditableTextBox({
+          allowedTags: ['p', 'span']
+        });
+
+        editableTextBox.props.allowedTags.should.be.eql(['p', 'span']);
+
+        unmountEditableTextBox();
+      });
+
+      it('disabled should be true', () => {
+        const editableTextBox = renderEditableTextBox({ disabled: true });
+
+        editableTextBox.props.disabled.should.be.ok();
+
+        unmountEditableTextBox();
+      });
     });
-    editableTextBox.state.charCount.should.be.eql(12);
   });
 
-  it('verify charCount is 12 if text of length 12 is manually inputted', () => {
-    const editableTextBox = renderEditableTextBox();
-    editableTextBox.handleOnInput('This is text');
-    editableTextBox.state.charCount.should.be.eql(12);
+  describe('State', () => {
+    describe('charCount', () => {
+      it('verify charCount is zero if text empty', () => {
+        const editableTextBox = renderEditableTextBox();
+        editableTextBox.state.charCount.should.be.eql(0);
+        unmountEditableTextBox();
+      });
+
+      it('verify charCount is 12 if default text is provided with length 12', () => {
+        const editableTextBox = renderEditableTextBox({
+          defaultText: 'This is text'
+        });
+        editableTextBox.state.charCount.should.be.eql(12);
+        unmountEditableTextBox();
+      });
+
+      // eslint-disable-next-line max-len
+      it('verify charCount is 12 if default text with length 12 is provided with extra HTML elements', () => {
+        const editableTextBox = renderEditableTextBox({
+          defaultText: '<p>This is text</p>'
+        });
+        editableTextBox.state.charCount.should.be.eql(12);
+        unmountEditableTextBox();
+      });
+
+      it('verify charCount is 12 if text of length 12 is manually inputted', () => {
+        const editableTextBox = renderEditableTextBox();
+        editableTextBox.handleOnInput('This is text');
+        editableTextBox.state.charCount.should.be.eql(12);
+        unmountEditableTextBox();
+      });
+    });
   });
 
-  it('verify editor contains empty <p> tags if no default text is provided', () => {
-    const editableTextBox = renderEditableTextBox({ defaultText: '' });
-    editableTextBox.editorEntry.innerHTML.should.be.eql('<p></p>');
+  describe('Formatting', () => {
+    describe('<p>', () => {
+      it('verify editor contains empty <p> tags if no default text is provided', () => {
+        const editableTextBox = renderEditableTextBox({ defaultText: '' });
+        editableTextBox.entry.innerHTML.should.be.eql('<p></p>');
+        unmountEditableTextBox();
+      });
+
+      it('verify editor contains empty <p> tags if no default text is provided', () => {
+        const editableTextBox = renderEditableTextBox();
+        editableTextBox.setInnerHTML(15, 'This is text...');
+        editableTextBox.entry.innerHTML.should.be.eql('This is text...');
+        unmountEditableTextBox();
+      });
+    });
+  });
+
+  describe('Methods', () => {
+    describe('getProps', () => {
+      it('verify getProps returns the correct props for entry element', () => {
+        const editableTextBox = renderEditableTextBox();
+        const resp = editableTextBox.getProps('entry');
+        resp.should.have.keys(
+          'customStyling',
+          'onInput',
+          'onKeyUp',
+          'ref',
+          'role'
+        );
+        unmountEditableTextBox();
+      });
+    });
   });
 };
