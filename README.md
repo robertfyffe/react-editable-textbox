@@ -1,7 +1,6 @@
 # react-content-editable
 
 [![Build Status](https://travis-ci.com/robertfyffe/react-editable-textbox.svg?branch=develop)](https://travis-ci.com/robertfyffe/react-editable-textbox)
-![gzip size](http://img.badgesize.io/https://unpkg.com/@robertfyffe/react-editable-textbox/dist/react-editable-textbox.min.js?compression=gzip)
 [![Coverage Status](https://coveralls.io/repos/github/robertfyffe/react-editable-textbox/badge.svg?branch=develop)](https://coveralls.io/github/robertfyffe/react-editable-textbox?branch=develop)
 
 react-content-editable is a simple, flexible contentEditable textbox built using React.js.
