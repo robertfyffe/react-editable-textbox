@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/robertfyffe/react-editable-textbox/compare/v0.0.18...v1.0.0) (2020-05-04)
+
 ### [0.0.18](https://github.com/robertfyffe/react-editable-textbox/compare/v0.0.17...v0.0.18) (2020-05-04)
 
 
