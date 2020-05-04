@@ -2,10 +2,6 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-require("core-js/modules/es.object.assign");
-
-require("core-js/modules/web.timers");
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });

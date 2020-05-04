@@ -4,16 +4,6 @@ var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWild
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-require("core-js/modules/es.date.to-string");
-
-require("core-js/modules/es.object.assign");
-
-require("core-js/modules/es.object.to-string");
-
-require("core-js/modules/es.reflect.construct");
-
-require("core-js/modules/es.regexp.to-string");
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
