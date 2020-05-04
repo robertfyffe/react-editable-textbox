@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "yarn webpack-dev-server --config ./scripts/webpack.config.js --inline --host 127.0.0.1 --content-base examples/",
-    "build": "env NODE_ENV=production babel src/ --out-dir dist/",
+    "build": "cross-env NODE_ENV=production babel src/ --out-dir dist/",
     "test": "yarn test:lint && cross-env NODE_ENV=test karma start",
     "test:lint": "yarn eslint --cache --quiet \"src/**/*.js\"",
     "test:lint:fix": "yarn test:lint --fix",
