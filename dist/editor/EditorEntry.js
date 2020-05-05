@@ -45,7 +45,7 @@ function _templateObject() {
 
 var containerBaseStyles = function containerBaseStyles(_ref) {
   var theme = _ref.theme;
-  return (0, _core.css)(_templateObject(), theme.editorEntry.border, theme.editorEntry.borderRadius, theme.editorEntry.color, theme.editorEntry.fontSize, theme.editorEntry.lineHeight, theme.editorEntry.outline, theme.editorEntry.padding, theme.editorEntry.height, theme.editorEntry.zIndex, theme.editorEntry.textSpacing, theme.editorEntry.focusBorderColor);
+  return (0, _core.css)(_templateObject(), theme.entry.border, theme.entry.borderRadius, theme.entry.color, theme.entry.fontSize, theme.entry.lineHeight, theme.entry.outline, theme.entry.padding, theme.entry.height, theme.entry.zIndex, theme.entry.textSpacing, theme.entry.focusBorderColor);
 };
 
 var containerCustomStyles = function containerCustomStyles(_ref2) {

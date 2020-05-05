@@ -128,12 +128,12 @@ var getTheme = function getTheme(_ref3) {
       user = themes.user;
   var appTheme = isGhost ? ghost : base;
   var editor = appTheme.editor,
-      editorPlaceholder = appTheme.editorPlaceholder,
-      editorEntry = appTheme.editorEntry;
+      placeholder = appTheme.placeholder,
+      entry = appTheme.entry;
   return Object.assign(Object.assign({}, appTheme), {}, {
     editor: Object.assign(Object.assign({}, editor), user.editor),
-    editorPlaceholder: Object.assign(Object.assign({}, editorPlaceholder), user.editorPlaceholder),
-    editorEntry: Object.assign(Object.assign({}, editorEntry), user.editorEntry)
+    placeholder: Object.assign(Object.assign({}, placeholder), user.placeholder),
+    entry: Object.assign(Object.assign({}, entry), user.entry)
   });
 };
 

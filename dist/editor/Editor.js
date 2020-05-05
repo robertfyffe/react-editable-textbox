@@ -94,7 +94,7 @@ var CONTAINER = _constants.elements.CONTAINER,
 
 var containerBaseStyles = function containerBaseStyles(_ref) {
   var theme = _ref.theme;
-  return (0, _core.css)(_templateObject(), theme.editor.background, theme.editorEntry.borderRadius, theme.editor.margin);
+  return (0, _core.css)(_templateObject(), theme.editor.background, theme.entry.borderRadius, theme.editor.margin);
 };
 
 var containerDisabledStyles = function containerDisabledStyles(_ref2) {

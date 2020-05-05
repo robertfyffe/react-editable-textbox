@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.editorEntry = exports.editorPlaceholder = exports.editor = void 0;
+exports.entry = exports.placeholder = exports.editor = void 0;
 
 var _colors = require("./colors");
 
@@ -17,13 +17,13 @@ var editor = {
   height: '38px'
 };
 exports.editor = editor;
-var editorPlaceholder = {
+var placeholder = {
   color: _colors.colors.n500,
   fontSize: editor.fontSize,
   padding: editor.padding
 };
-exports.editorPlaceholder = editorPlaceholder;
-var editorEntry = {
+exports.placeholder = placeholder;
+var entry = {
   border: "1px solid ".concat(_colors.colors.n500),
   focusBorderColor: _colors.colors.n700,
   borderRadius: editor.borderRadius,
@@ -35,4 +35,4 @@ var editorEntry = {
   height: editor.height,
   zIndex: 10
 };
-exports.editorEntry = editorEntry;
+exports.entry = entry;

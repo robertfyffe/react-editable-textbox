@@ -47,7 +47,7 @@ function _templateObject() {
 
 var containerBaseStyles = function containerBaseStyles(_ref) {
   var theme = _ref.theme;
-  return (0, _core.css)(_templateObject(), theme.editorPlaceholder.color, theme.editorPlaceholder.fontSize, theme.editorPlaceholder.padding);
+  return (0, _core.css)(_templateObject(), theme.placeholder.color, theme.placeholder.fontSize, theme.placeholder.padding);
 };
 
 var containerCustomStyles = function containerCustomStyles(_ref2) {
