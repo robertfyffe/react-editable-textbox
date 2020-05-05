@@ -1,6 +1,6 @@
 {
   "name": "@robertfyffe/react-editable-textbox",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React component for creating a contentEditable textbox.",
   "main": "dist/index.js",
   "scripts": {

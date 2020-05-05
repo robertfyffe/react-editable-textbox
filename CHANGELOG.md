@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/robertfyffe/react-editable-textbox/compare/v1.0.0...v1.0.1) (2020-05-05)
+
+
+### Bug Fixes
+
+* **utils:** corrected bug with wrong user theme property names ([#20](https://github.com/robertfyffe/react-editable-textbox/issues/20)) ([d017ba9](https://github.com/robertfyffe/react-editable-textbox/commit/d017ba9f2cfbd68fdb16940fc7885950d97d86d7))
+
 ## [1.0.0](https://github.com/robertfyffe/react-editable-textbox/compare/v0.0.18...v1.0.0) (2020-05-04)
 
 ### [0.0.18](https://github.com/robertfyffe/react-editable-textbox/compare/v0.0.17...v0.0.18) (2020-05-04)
