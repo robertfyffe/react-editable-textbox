@@ -30,7 +30,7 @@ class App extends PureComponent {
         props: {
           key,
           style: {
-            color: 'blue'
+            color: 'teal'
           }
         },
         children: node.text

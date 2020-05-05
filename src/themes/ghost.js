@@ -5,12 +5,12 @@ export const editor = {
   margin: '0 0 15px'
 };
 
-export const editorPlaceholder = {
+export const placeholder = {
   color: colors.n500,
   fontSize: editor.fontSize
 };
 
-export const editorEntry = {
+export const entry = {
   focusBorderColor: colors.n700,
   borderRadius: editor.borderRadius,
   color: colors.n800,

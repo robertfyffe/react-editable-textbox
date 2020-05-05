@@ -92,8 +92,8 @@ export const unmountEditableTextBox = function () {
 
 export const themeSchema = {
   editor: {},
-  editorPlaceholder: {},
-  editorEntry: {}
+  placeholder: {},
+  entry: {}
 };
 
 export const defaultTheme = allThemes;
@@ -108,12 +108,12 @@ export const userTheme = {
     textSpacing: 'userProvided',
     height: 'userProvided'
   },
-  editorPlaceholder: {
+  placeholder: {
     color: 'userProvided',
     fontSize: 'userProvided',
     padding: 'userProvided'
   },
-  editorEntry: {
+  entry: {
     border: 'userProvided',
     focusBorderColor: 'userProvided',
     borderRadius: 'userProvided',

@@ -17,7 +17,7 @@ const { CONTAINER, PLACEHOLDER, ENTRY, STASH } = elements;
 
 const containerBaseStyles = ({ theme }) => css`
   background: ${theme.editor.background};
-  border-radius: ${theme.editorEntry.borderRadius};
+  border-radius: ${theme.entry.borderRadius};
   position: relative;
   display: flex;
   flex-wrap: wrap;
