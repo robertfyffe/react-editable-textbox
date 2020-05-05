@@ -10,13 +10,13 @@ export const editor = {
   height: '38px'
 };
 
-export const editorPlaceholder = {
+export const placeholder = {
   color: colors.n500,
   fontSize: editor.fontSize,
   padding: editor.padding
 };
 
-export const editorEntry = {
+export const entry = {
   border: `1px solid ${colors.n500}`,
   focusBorderColor: colors.n700,
   borderRadius: editor.borderRadius,

@@ -6,25 +6,25 @@ import propTypes from './propTypes';
 import defaultProps from './defaultProps';
 
 const containerBaseStyles = ({ theme }) => css`
-  border: ${theme.editorEntry.border};
-  border-radius: ${theme.editorEntry.borderRadius};
-  color: ${theme.editorEntry.color};
-  font-size: ${theme.editorEntry.fontSize};
-  line-height: ${theme.editorEntry.lineHeight};
-  outline: ${theme.editorEntry.outline};
-  padding: ${theme.editorEntry.padding};
-  min-height: ${theme.editorEntry.height};
-  z-index: ${theme.editorEntry.zIndex};
+  border: ${theme.entry.border};
+  border-radius: ${theme.entry.borderRadius};
+  color: ${theme.entry.color};
+  font-size: ${theme.entry.fontSize};
+  line-height: ${theme.entry.lineHeight};
+  outline: ${theme.entry.outline};
+  padding: ${theme.entry.padding};
+  min-height: ${theme.entry.height};
+  z-index: ${theme.entry.zIndex};
   position: relative;
   width: 100%;
 
   p {
-    margin: ${theme.editorEntry.textSpacing};
+    margin: ${theme.entry.textSpacing};
     min-height: 18px;
   }
 
   &:focus {
-    border-color: ${theme.editorEntry.focusBorderColor};
+    border-color: ${theme.entry.focusBorderColor};
   }
 `;
 

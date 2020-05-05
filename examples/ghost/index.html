@@ -1,19 +1,74 @@
 <!DOCTYPE html public "embarassment">
 <html>
   <head>
-    <title>Ghost Example</title>
+    <title>All Examples</title>
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, user-scalable=no"
     />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+      type="text/css"
+    />
   </head>
   <body>
-    <header class="branding padbox">
-      <h1>react-content-editable</h1>
-      <h2>an accessible React content editable component</h2>
-    </header>
+    <div
+      class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom shadow-sm"
+    >
+      <h5 class="my-0 mr-md-auto font-weight-normal">
+        @robertfyffe/react-editable-textbox
+      </h5>
+    </div>
 
-    <div id="example"></div>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Basic</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/ghost/">Ghost</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/advanced/">Advanced</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/component/">Component</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main" class="container mb-5">
+      <div class="jumbotron">
+        <h1>Ghost Theme</h1>
+        <p class="lead">
+          This example illustrates the behaviour of the
+          <code>isGhost</code> prop. It provides an editable textbox with just
+          text styling.
+        </p>
+        <br />
+        <div id="example"></div>
+      </div>
+
+      <h3 class="mb-3">Code</h3>
+      <div class="highlight">
+        <code>
+          const defaultText = `&lt;p&gt;Lorem ipsum dolor sit amet, consectetur
+          adipiscing elit. Suspendisse maximus felis ut mauris mattis tempor. Ut
+          suscipit aliquet est non sagittis. Fusce lobortis sodales nulla,
+          tincidunt ornare massa vehicula id. Vivamus sit amet tellus quis risus
+          ultrices iaculis. Praesent a porttitor nisi. Maecenas vitae aliquam
+          sapien.&lt;/p&gt;`;
+        </code>
+        <br /><br />
+        <code>
+          const App = () => &lt;EditableTextBox defaultText={defaultText}
+          isGhost /&gt;
+        </code>
+      </div>
+    </main>
 
     <script src="../__build__/ghost.js" type="application/javascript"></script>
   </body>

@@ -10,21 +10,54 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
       type="text/css"
-      integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
-      crossorigin="anonymous"
     />
   </head>
   <body>
-    <header class="branding padbox">
-      <h1>react-content-editable</h1>
-      <h2>an accessible React content editable component</h2>
-    </header>
-
-    <div id="example" class="padbox">
-      <a class="btn btn-primary" href="/basic/">Basic</a>
-      <a class="btn btn-primary" href="/ghost/">Ghost</a>
-      <a class="btn btn-primary" href="/advanced/">Advanced</a>
-      <a class="btn btn-primary" href="/component/">Component</a>
+    <div
+      class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom shadow-sm"
+    >
+      <h5 class="my-0 mr-md-auto font-weight-normal">
+        @robertfyffe/react-editable-textbox
+      </h5>
     </div>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Basic</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/ghost/">Ghost</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/advanced/">Advanced</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/component/">Component</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main" class="container">
+      <div class="jumbotron">
+        <h1>Basic</h1>
+        <p class="lead">
+          This example illustrates the default behaviour of the component.
+        </p>
+        <br />
+        <div id="example"></div>
+      </div>
+
+      <h3 class="mb-3">Code</h3>
+      <div class="highlight">
+        <code>
+          const App = () => &lt;EditableTextBox /&gt;
+        </code>
+      </div>
+    </main>
+
+    <script src="../__build__/basic.js" type="application/javascript"></script>
   </body>
 </html>

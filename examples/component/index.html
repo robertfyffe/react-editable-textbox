@@ -1,19 +1,124 @@
 <!DOCTYPE html public "embarassment">
 <html>
   <head>
-    <title>Component Example</title>
+    <title>All Examples</title>
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, user-scalable=no"
     />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+      type="text/css"
+    />
   </head>
   <body>
-    <header class="branding padbox">
-      <h1>react-content-editable</h1>
-      <h2>an accessible React content editable component</h2>
-    </header>
+    <div
+      class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom shadow-sm"
+    >
+      <h5 class="my-0 mr-md-auto font-weight-normal">
+        @robertfyffe/react-editable-textbox
+      </h5>
+    </div>
 
-    <div id="example"></div>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Basic</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/ghost/">Ghost</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/advanced/">Advanced</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/component/">Component</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main" class="container">
+      <div class="jumbotron">
+        <h1>Component</h1>
+        <p class="lead">
+          This example illustrates how content of the text box can be converted
+          to a React component and passed back down. This provides full control
+          over the content of the textbox.
+        </p>
+        <br />
+        <div id="example"></div>
+      </div>
+
+      <h3 class="mb-3">Code</h3>
+      <div class="highlight">
+        <pre>
+          <code>
+const createElement = ({ props, children }) => React.createElement('p', props, children);
+
+const initialState = {
+  component: [
+    createElement({
+      props: {
+        key: 0
+      }
+    })
+  ]
+};
+
+const allowedAttributes = ['style'];
+
+class App extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = initialState;
+  }
+
+  convertToComponent = ({ childNodes }) =>
+    childNodes.map((node, key) =>
+      createElement({
+        props: {
+          key,
+          style: {
+            color: 'teal'
+          }
+        },
+        children: node.text
+      })
+    );
+
+  handleOnInput = ({ charCount, text }) => {
+    if (!charCount) {
+      return this.setState(initialState);
+    }
+
+    this.setState({
+      component: this.convertToComponent(parse(text))
+    });
+  };
+
+  render = () => (
+    &lt;EditableTextBox
+      onInput={this.handleOnInput}
+      allowedAttributes={allowedAttributes}
+      onBlur={text => console.log('Blurred', text)}
+      onFocus={text => console.log('Focussed', text)}
+      aria={{
+        'aria-placeholder': 'Content Editable Textbox',
+        'aria-labelledby': 'contentEditableLabel'
+      }}
+      isGhost
+    &gt;
+      {this.state.component}
+    &lt;/EditableTextBox&gt;
+  );
+}
+        </code>
+      </pre>
+      </div>
+    </main>
 
     <script
       src="../__build__/component.js"

@@ -42,12 +42,12 @@ To install, you can use [npm](https://npmjs.org/) or [yarn](https://yarnpkg.com)
         textSpacing: '0 0 15px',
         height: '33px'
       },
-      editorPlaceholder: {
+      placeholder: {
         color: '#721c24',
         fontSize: '16px',
         padding: '6px 0 6px 10px'
       },
-      editorEntry: {
+      entry: {
         border: '1px solid #f5c6cb',
         focusBorderColor: '#5C656F',
         borderRadius: '5px',
@@ -61,22 +61,22 @@ To install, you can use [npm](https://npmjs.org/) or [yarn](https://yarnpkg.com)
       }
     }
     /* Object indicating theme override styles to be used.
-      It has three keys, `editor`, `editorPlaceholder` and `editorEntry`.
+      It has three keys, `editor`, `placeholder` and `entry`.
       The properties are fixed using this method of styling.
       If more precise styling is required use the styles prop. */
   }
   styles={
     {
-      editorPlaceholder: {
+      placeholder: {
         fontStyle: 'italic'
       },
-      editorEntry: {
+      entry: {
         borderWidth: '4px',
         outline: 0
       }
     }
     /* Object indicating custom styles to be used.
-      It has three keys, `editor`, `editorPlaceholder` and `editorEntry`.
+      It has three keys, `editor`, `placeholder` and `entry`.
       All CSS properties can be passed. */
   }
   aria={

@@ -6,9 +6,9 @@ import propTypes from './propTypes';
 import defaultProps from './defaultProps';
 
 const containerBaseStyles = ({ theme }) => css`
-  color: ${theme.editorPlaceholder.color};
-  font-size: ${theme.editorPlaceholder.fontSize};
-  padding: ${theme.editorPlaceholder.padding};
+  color: ${theme.placeholder.color};
+  font-size: ${theme.placeholder.fontSize};
+  padding: ${theme.placeholder.padding};
   position: absolute;
   top: 0;
   left: 0;

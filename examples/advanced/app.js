@@ -6,39 +6,38 @@ const App = () => (
   <EditableTextBox
     theme={{
       editor: {
-        background: '#d1ecf1',
-        borderRadius: '5px',
-        fontSize: '16px',
+        background: 'white',
+        borderRadius: '10px',
         margin: '0 0 15px',
         padding: '6px 0 6px 10px',
         textSpacing: '0 0 15px',
-        height: '38px'
+        height: '100px'
       },
-      editorPlaceholder: {
-        color: '#57a1ae',
-        fontSize: '16px',
+      placeholder: {
+        color: 'rgba(0,0,0,.4)',
+        fontSize: '24px',
         padding: '10px 0 6px 14px'
       },
-      editorEntry: {
-        border: '1px solid #bee5eb',
-        focusBorderColor: '#0c5460',
-        borderRadius: '5px',
-        color: '#0c5460',
-        fontSize: '16px',
+      entry: {
+        border: '0',
+        borderRadius: '10px',
+        color: 'rgba(0,0,0,.7)',
+        fontSize: '24px',
         lineHeight: '21px',
-        padding: '6px 0 6px 10px',
+        padding: '16px 0 6px 10px',
         textSpacing: '0 0 15px',
-        height: '38px',
+        height: '100px',
         zIndex: 10
       }
     }}
     styles={{
-      editorPlaceholder: {
+      placeholder: {
         fontStyle: 'italic'
       },
-      editorEntry: {
+      entry: {
         borderWidth: '4px',
-        outline: 0
+        outline: 0,
+        textShadow: '0 1px 5px rgba(0, 0, 0, 0.1)'
       }
     }}
     aria={{
@@ -46,9 +45,7 @@ const App = () => (
       'aria-labelledby': 'contentEditableLabel'
     }}
     role={'textbox'}
-    defaultText={
-      '<p>This is an <script>example</script> with default text.</p>'
-    }
+    defaultText={'<p>This is an example with default text...</p>'}
     placeholder={'Placeholder text...'}
     disabled={false}
     allowedTags={['p']}

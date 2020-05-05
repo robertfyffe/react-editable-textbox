@@ -72,7 +72,7 @@ const getCustomStyling = (element, styles) => {
 const getTheme = ({ themes, isGhost }) => {
   const { base, ghost, user } = themes;
   const appTheme = isGhost ? ghost : base;
-  const { editor, editorPlaceholder, editorEntry } = appTheme;
+  const { editor, placeholder, entry } = appTheme;
 
   return {
     ...appTheme,
@@ -80,13 +80,13 @@ const getTheme = ({ themes, isGhost }) => {
       ...editor,
       ...user.editor
     },
-    editorPlaceholder: {
-      ...editorPlaceholder,
-      ...user.editorPlaceholder
+    placeholder: {
+      ...placeholder,
+      ...user.placeholder
     },
-    editorEntry: {
-      ...editorEntry,
-      ...user.editorEntry
+    entry: {
+      ...entry,
+      ...user.entry
     }
   };
 };

@@ -134,7 +134,6 @@ export default () => {
     });
   });
 
-  // Updates keys
   describe('getTheme', () => {
     it('verify getTheme returns the correct schema', () => {
       const resp = utils.getTheme({
@@ -144,7 +143,7 @@ export default () => {
         },
         isGhost: true
       });
-      resp.should.have.keys('editor', 'editorPlaceholder', 'editorEntry');
+      resp.should.have.keys('editor', 'placeholder', 'entry');
     });
   });
 
